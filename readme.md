@@ -1,4 +1,4 @@
-#### Design Patterns (Universidad de Alberta) 
+# Design Patterns (Universidad de Alberta) 
 
 ## Introducción a patrones de diseño: Patrones creacionales y estructurales
 
