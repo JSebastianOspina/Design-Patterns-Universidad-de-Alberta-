@@ -1,6 +1,6 @@
 # Design Patterns (Universidad de Alberta) 
 
-## Introducción a patrones de diseño: Patrones creacionales y estructurales
+## Introducción a patrones de diseño: Patrones creacionales y estructurales
 
 ### 2.1.1 ¿Que es un patrón de diseño?
 
