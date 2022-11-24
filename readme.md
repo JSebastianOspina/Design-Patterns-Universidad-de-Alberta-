@@ -55,7 +55,7 @@ public static ExampleSingleton getlnstance() {
 }
 ```
 
-### 2.1.3 Factory Method Pattern (AKA Virtual Constructor)
+### 2.1.4 Factory Method Pattern (AKA Virtual Constructor)
 
 ```
 El patrón de diseño de fábrica define una interfaz para crear objetos,
@@ -360,3 +360,98 @@ public BudgetKnifeStore extends KnifeStore {
  }
 
 ```
+
+### 2.1.4 Facade Pattern
+A pesar de que la logica del negocio pueda ser amplia y compleja, lo cual conllevaría a que partes del código sean tambíen complejas; esto no debe significar que la clase del cliente deba ser igual de complicada, pues se puede volver tedioso trabajar con ella.
+
+- El Patron fachada (Facade pattern) crea una sola y simplificada interza para que la clase del cliente interacture con el subsistema.
+- No añade mas funcionalidades, Solo funciona como un punto de entrada en el subsistemas.
+- Es una clase Wrapper que encapsula un subsistema para ocultar su complejidad.
+- Este puede usarse para envolver todas las interfaces y clases de un subsistemas.
+
+#### ¿Cómo aplicarlo?
+
+1) Diseñar la interfáz
+
+```java
+public interface IAccount{
+     public void deposit(BigDecimal amout);
+     public void withdraw(BigDecimal amout);
+     public void transfer(BigDecimal amout);
+     public int getAccountNumber();
+}
+
+```
+
+2) **Implementar** la interfaz en una o mas clases. Ya que esto permite crear "subtipos", lo que significa que las siguientes clases **son subtipos de IAccount y se espera que se comporten como un tipo de dato IAccount**.
+
+```java
+public class Chequing implements IAccount { ... }
+public class Saving implements IAccount { ... }
+public class Investment implements IAccount { ... }
+
+}
+```
+
+3) Crear la clase fachada y atrapar las clases que implementan la interfaz.
+
+``` java
+public class BankService {
+      private Hashtable<int,IAccount> bankAccounts;
+      public BankService() {
+           this.bankAccounts = new Hashtable<int, IAccount>;
+      } 
+      public int createNewAccount (String type, BigDecimal initAmount) {
+           IAccount newAccount null;
+           switch (type) {
+                case "chequing":
+                    newAccount = new Chequing (initAmount);
+                    break;
+                case "saving":
+                    newAccount = new Saving( (initAmount);
+                    break;
+                case
+                    "investment":
+                    newAccount = new Investment( (initAmount);
+                    break;
+                default:
+                     System.out.println( ("Invalid account type");
+                     break;
+           }
+           if (newAccount != null)
+                this.bankAccounts.put(newAccount. getAccountNumber(), newAccount);
+                return newAccount.getAccountNumber();
+           }
+           return -1;
+           }
+
+      public void transferMoney (int to, int from, BigDecimal amount){
+           IAccount toAccount = this.bankAccounts.get(to);
+           IAccount fromAccount = this.bankAccounts.get(from);
+           fromAccount.tranfer(toAccount,amount);
+     }
+
+```
+
+4) Usar el facade para acceder al subsistema.
+
+``` java
+public class Customer {
+     public static void main (String args[]) {
+          BankService myBankService = new BankService();
+          int mySaving = myBankService.createNewAccount ("saving",
+               new BigDecimal (500.00));
+          int myInvestment = myBankService.createNewAccount(
+               "investment", new BigDecimal( (1000.00));
+          myBankService.transferMoney (mySaving, myInvestment, new
+               BigDecimal( (300.00));
+
+```
+
+#### Resumen
+
+- Su proposito es oculta la complejidad de un subsistmma, mediante un wrapper que unifica todo llamado la clase facade.
+- Remove la necesidad de la clase del cliente de manajerar el subsistema, resultando en menos acoplamieno entre los subsistemas y las clases del cliente.
+- maneja la inicualización y redireccion de tareas a la clase apropiada del subsistema.
+- Se provee al cliente una interdaz simplficiada al subsistema.
+- Funciona solo como un punto de entrada al subsistrma y no añade mas funcionalidades al mismo. 
