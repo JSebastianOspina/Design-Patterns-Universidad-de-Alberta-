@@ -1,6 +1,6 @@
-#### Design Patterns (Universidad de Alberta) 
+#### Design Patterns (Universidad de Alberta)
 
-## Introducción a patrones de diseño: Patrones creacionales y estructurales
+##  Introducción a patrones de diseño: Patrones creacionales y estructurales
 
 ### 2.1.1 ¿Que es un patrón de diseño?
 
@@ -10,9 +10,9 @@ Hay 23 patrones de diseño, que pueden encontrarse en el libro Design Patterns: 
 
 Hay muchos patrones de diseño, y en algunas ocasiones puede parecer que cumple con los requisitos del softwre, pero puede resultarn o ser el mas apropiado.
 
-### 2.1.2 Patrones creacionales, estructurales y de comportamiento.
+### 2.1.2 Patrones creacionales, estructurales y de comportamiento
 
-#### Patrones creacionales
+#### Patrones creacionales
 
 Se empecializan en la creación y clonación de objetos.
 
@@ -32,8 +32,7 @@ Es un **patrón creacional** pues describe la manera en la que se crean los obje
   
 - Tiene un objeto Singleton que es accesible globalmente.
   
-
-#### ¿Como se logra?
+#### ¿Como se logra?
 
 A través de un constructor privado. Si este es privado, no se puede acceder al constructor de la clase desde afuera, lo que impide la creación de nuevos objetos de esta clase. Se puede hacer uso de "lazy creation", lo que significa que el objeto de esta clase no es creado hasta que de verdad se necesita.
 
@@ -59,7 +58,7 @@ public static ExampleSingleton getlnstance() {
 ### 2.1.3 Factory Method Pattern (AKA Virtual Constructor)
 
 ```
-El patrón de diseño de fábrica define una interfaz para crear objetos, 
+El patrón de diseño de fábrica define una interfaz para crear objetos,
 pero deja a las subclases decidir que clase se debe instanciar
 ```
 
@@ -67,7 +66,7 @@ Se orienta a la creación de objetos. En este patrón, la creación de objetos o
 
 Este patron de diseño sugiere que se remplaza **la creación directa de objetos** (usar el operador new) con llamados a el **factory method**. Los objetos que retorna el factory method son llamados usualmente **productos**.
 
-![](file://C:\Users\U15280500267\AppData\Roaming\marktext\images\2022-11-23-17-27-04-solution1.png?msec=1669242424796)
+![](/images/road-logistics.png)
 
 Las subclases pueden alterar el tipo de objeto que retorna el factory method modificando unicamente las subclases. Pero esto únicamente es permitido si estas tienen una base en común (o una interfaz). Tambien el factory method en la clase base debe tener el tipo de dato que retorna declarado como esta interfaz.
 
@@ -75,7 +74,11 @@ Las subclases pueden alterar el tipo de objeto que retorna el factory method mod
 
 Todos los productos deben seguir la misma interfaz.
 
-![](/images/factory-method-pattern.png)
+![Factory method pattern structure](/images/factory-method-pattern.png)
+<div align="center">
+   **Factory method pattern structure**
+</div>
+
 
 ####  Object creator
 
@@ -127,7 +130,6 @@ public class KnifeStore {
   
 - El cliente no tiene que solicitar clases concretas (en el caso de haber mas clases, por ejemplo cuchillo de chef, de pan, etc), sino que trabaja con un generalización del cuchillo.
   
-
 ```
 Coding to an interface, not an implementation
 ```
@@ -137,9 +139,8 @@ Sin embargo, aún no es un patrón. Para convertirse en patrón la clase de tien
 - KnifeStore
   
   - BudgetKnifeStore
-    
+
   - QualityKnifeStore
-    
 
 Se debe crear una superclase, que es la que usará la fabrica, y esta debe ser **abstracta**. Al tratarse de una clase abstracta, esta **no se puede instanciar**. Esto hace que el **factory method sea definido en las subclases**.
 
