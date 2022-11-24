@@ -71,11 +71,11 @@ Este patron de diseño sugiere que se remplaza **la creación directa de objetos
 
 Las subclases pueden alterar el tipo de objeto que retorna el factory method modificando unicamente las subclases. Pero esto únicamente es permitido si estas tienen una base en común (o una interfaz). Tambien el factory method en la clase base debe tener el tipo de dato que retorna declarado como esta interfaz.
 
-![](file://C:\Users\U15280500267\AppData\Roaming\marktext\images\2022-11-23-17-30-58-solution2-en.png?msec=1669242658412)
+![](/images/truckandship.png)
 
 Todos los productos deben seguir la misma interfaz.
 
-![](file://C:\Users\U15280500267\AppData\Roaming\marktext\images\2022-11-23-17-37-01-structure-2x.png?msec=1669243021217)
+![](/images/factory-method-pattern.png)
 
 ####  Object creator
 
